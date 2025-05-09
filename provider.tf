@@ -1,3 +1,4 @@
+// aws 연결할때 필요한 코드
 terraform {
   required_providers {
     aws = {
