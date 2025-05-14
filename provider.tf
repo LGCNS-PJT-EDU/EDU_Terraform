@@ -14,6 +14,11 @@ provider "aws" {
   region = "ap-northeast-2"
 }
 
+provider "aws" {
+  alias = "use1"
+  region = "us-east-1" # CloudFront 인증서 전용 리전
+}
+
 # data "aws_eks_cluster_auth" "cluster" {
 #   name = module.eks.cluster_name
 # }
