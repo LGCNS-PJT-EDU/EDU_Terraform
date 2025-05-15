@@ -1,5 +1,6 @@
-# This file is maintained automatically by "terraform init".
-# Manual edits may be lost in future updates.
+# Terraform이 사용하는 provider(=AWS, Helm, Kubernetes 등)의 버전을 고정(lock)하고, 신뢰할 수 있는 해시(hash)로 검증하는 용도의 파일
+# terraform init 명령을 실행하면 자동으로 만들어짐
+# 직접 수정하거나 Git에 커밋할 필요는 거의 없음, 하지만 공유 저장소에서는 커밋해두는 것이 베스트 프랙티스
 
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "5.97.0"

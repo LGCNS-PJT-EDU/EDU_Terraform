@@ -1,3 +1,4 @@
+# takeit.academy 도메인에 대한 인증서 발급
 resource "aws_acm_certificate" "cert" {
   provider          = aws.use1
   domain_name       = "takeit.academy"
@@ -8,7 +9,7 @@ resource "aws_acm_certificate" "cert" {
   }
 }
 
-
+# Route53에 DNS 인증 정보 등록
 resource "aws_route53_record" "cert_validation" {
   for_each = { // domain_validation_options에서 레코드들을 하나씩 뽑아서 Route53에 등록
     for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
@@ -25,6 +26,7 @@ resource "aws_route53_record" "cert_validation" {
   ttl     = 60
 }
 
+# 위 인증서와 Route53 레코드를 연결하여 검증 완료 처리
 resource "aws_acm_certificate_validation" "cert_validation" {
   provider                = aws.use1
   certificate_arn         = aws_acm_certificate.cert.arn

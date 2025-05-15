@@ -1,0 +1,11 @@
+# Helm 차트를 통해 ArgoCD를 설치할 때 사용하는 사용자 정의 설정 파일입니다.
+# ArgoCD는 EKS에 설치되는 앱이며, instances/는 EKS, EC2, ECR 등 실행 리소스를 모으는 폴더입니다. Helm 관련 values 파일도 이 안에 포함시키는 것이 일반적입니다.
+server:
+  service:
+    type: ClusterIP       # ArgoCD 서버를 ClusterIP로 (내부에서만 접근 가능)
+  ingress:
+    enabled: false        # Ingress를 비활성화 (ALB 등 외부 공개 X)
+
+configs:
+  params:
+    server.insecure: true # HTTPS 없이 HTTP로 접속 허용 (실습/내부용일 때만!)
