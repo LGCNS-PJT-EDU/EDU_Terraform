@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "cert" {
-  provider          = aws.use1
+  provider          = aws
   domain_name       = "takeit.academy"
   validation_method = "DNS" // 검증용 DNS 레코드를 Route53에 등록
 

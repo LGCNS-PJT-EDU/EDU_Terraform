@@ -18,29 +18,3 @@ provider "aws" {
   alias = "use1"
   region = "us-east-1" # CloudFront 인증서 전용 리전
 }
-
-# data "aws_eks_cluster_auth" "cluster" {
-#   name = module.eks.cluster_name
-# }
-
-# provider "kubernetes" {
-#   host                   = try(module.eks.cluster_endpoint, "")
-#   cluster_ca_certificate = try(base64decode(module.eks.cluster_certificate_authority_data), "")
-#   token                  = try(data.aws_eks_cluster_auth.cluster.token, "")
-# }
-
-# provider "kubernetes" {
-#   host                   = module.eks.cluster_endpoint
-#   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
-#   token                  = data.aws_eks_cluster_auth.cluster.token
-# }
-#
-#     provider "helm" {
-#   kubernetes {
-#     host                   = try(module.eks.cluster_endpoint, "")
-#     cluster_ca_certificate = try(base64decode(module.eks.cluster_certificate_authority_data), "")
-#     token                  = try(data.aws_eks_cluster_auth.cluster.token, "")
-#   }
-# }
-#
-
